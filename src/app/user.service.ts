@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
 
 import { User } from './user';
 
@@ -10,11 +9,12 @@ export class UserService {
 
   private serverResponse = '{ "email": [ "can\'t be blank" ], "first_name": [ "can\'t be blank" ], "last_name": [ "can\'t be blank" ] }'; 
   private userDictionary = { 
-    2616823: '{ "id": 2616823, "buyer_id": 2616823, "first_name": "santosh", "last_name": "sahu", "email": "santosh.sahu@thomsonreuters.com" }',
-    2616837: '{ "id": 2616837, "buyer_id": 2616837, "first_name": "Arpit", "last_name": "Saxena", "email": "arpit.saxena@thomsonreuters.com" }'
+    1: '{ "id": 1, "buyer_id": 1, "first_name": "Fred", "last_name": "Flintstone", "email": "fred.flintstone@slaterockandgravel.com" }',
+    2: '{ "id": 2, "buyer_id": 2, "first_name": "Barney", "last_name": "Rubble", "email": "barney.rubble@slaterockandgravel.com" }',
+    3: '{ "id": 3, "buyer_id": 3, "first_name": "Wilma", "last_name": "Flintstone", "email": "wilma.flinstone@dailygranite.com" }'
   };
 
-  constructor(private http: Http) { }
+  constructor() { }
 
 
   getUsers() {

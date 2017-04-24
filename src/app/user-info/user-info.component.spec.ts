@@ -1,4 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MaterialModule, MdCardModule, MdGridListModule, MdIconModule, MdToolbarModule, MdButtonModule } from '@angular/material';
+import { RouterModule, Routes } from '@angular/router';
+import { AppRoutingModule } from '../app-routing.module';
+import { DashboardComponent } from '../dashboard/dashboard.component';
+import { LogoutComponent } from '../account/logout.component';
+import { UserDetailComponent } from '../user/detail.component';
+import { APP_BASE_HREF } from '@angular/common';
 
 import { UserInfoComponent } from './user-info.component';
 
@@ -8,7 +15,9 @@ describe('UserInfoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserInfoComponent ]
+      providers: [ {provide: APP_BASE_HREF, useValue: '/'} ],
+      declarations: [ UserInfoComponent, DashboardComponent, LogoutComponent, UserDetailComponent ],
+      imports: [ MaterialModule.forRoot(), RouterModule, AppRoutingModule ]
     })
     .compileComponents();
   }));
