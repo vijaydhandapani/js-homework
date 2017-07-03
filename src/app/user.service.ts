@@ -36,12 +36,14 @@ getServerResponse(){
   return this.formErrors;
 }
 
-addNewUser(formValue){
+
+addNewUser(user){
    
-     formValue['id']=4;
-     formValue['buyer_id'] = 4;
-     console.log(formValue)
-     //this.newUserSubject.next(formValue);
+     let newId = 4;// Assuming getUsers called adding based on the length 
+     user.id= newId;
+     user['buyer_id'] = newId;
+     console.log(user)
+     //this.newUserSubject.next(user);
   
 }
   private logError(error: any) {
