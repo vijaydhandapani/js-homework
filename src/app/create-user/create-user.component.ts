@@ -23,15 +23,21 @@ export class CreateUserComponent  {
   constructor(private userService: UserService, private _route: Router) { }
 
    onUserSubmit(f: NgForm){
-    
+    //Reset the errorMsg Property
      this.errorMsg.email='';this.errorMsg.firstName='';this.errorMsg.lastName='';
+     
+     //assign form value to userDetails varibale
      this.userDetails = f.value;
+     
+     //if form is not empty create user and pass.post the value to the user.service
      if(f.valid){
        console.log("Create User");
        this.createUser(this.userDetails)
     }else{
-      
+      //form is not valid, call the serverError 
         this.serverError = this.userService.getServerResponse();
+
+        //Set the serverError to the errorMsg email,fname & lname Property
         Object.keys(this.userDetails).forEach(key => {
             if(key ==='email'){
               // check email validation 
@@ -43,24 +49,18 @@ export class CreateUserComponent  {
               // first name is empty
               this.errorMsg.firstName = this.serverError[key][0];
             }else{
-                // lastname is empt
+                // lastname is empty
                 this.errorMsg.lastName = this.serverError[key][0];            
             }
       });
 
-        // for( var a  in this.userDetails ){
-        //     if (this.userDetails.hasOwnProperty(a)) {
-                
-        //     }
-        // }
-        console.log(this.serverError);
-        console.log(this.errorMsg);
     }
    }
-
+   
+//post the new user details to the server
   createUser(userDetails){
     this.userService.addNewUser(userDetails);
     this._route.navigate([''])
-    //  this.userService.addNewUser(userDetails);
+    
   }
 }
