@@ -15,7 +15,7 @@ describe('UserDetailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ UserDetailComponent, DashboardComponent, LogoutComponent ],
-      imports: [ MaterialModule.forRoot(), RouterModule, AppRoutingModule ],
+      imports: [ MaterialModule, RouterModule, AppRoutingModule ],
       providers: [ {provide: APP_BASE_HREF, useValue: '/'} ]
     })
     .compileComponents();
