@@ -2,7 +2,9 @@ import { Component} from '@angular/core';
 import { UserService } from '../user.service';
 import {FormsModule, NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
+import {User} from '../user';
 import {ErrorMsg} from './error-msg';
+
 
 
 
@@ -15,7 +17,7 @@ import {ErrorMsg} from './error-msg';
 })
 export class CreateUserComponent  {
 
-  userDetails:Object;
+  userDetails:User;
   serverError:Object;
   errorMsg = new ErrorMsg()
    
@@ -56,7 +58,7 @@ export class CreateUserComponent  {
 
     }
    }
-   
+
 //post the new user details to the server
   createUser(userDetails){
     this.userService.addNewUser(userDetails);
