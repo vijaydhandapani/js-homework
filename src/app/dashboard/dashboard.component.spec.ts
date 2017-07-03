@@ -7,7 +7,9 @@ import { LogoutComponent } from '../account/logout.component';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { UserDetailComponent } from '../user/detail.component';
+import { CreateUserComponent } from '../create-user/create-user.component';
 import { AppRoutingModule } from '../app-routing.module';
+import {FormsModule, NgForm} from '@angular/forms';
 import { APP_BASE_HREF } from '@angular/common';
 
 
@@ -17,8 +19,8 @@ describe('DashboardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DashboardComponent, LogoutComponent, UserDetailComponent ],
-      imports: [ MaterialModule.forRoot(), RouterModule, AppRoutingModule ],
+      declarations: [ DashboardComponent, LogoutComponent, UserDetailComponent, CreateUserComponent ],
+      imports: [ MaterialModule, RouterModule, AppRoutingModule, FormsModule ],
       providers: [ {provide: APP_BASE_HREF, useValue: '/'} ],
     })
     .compileComponents();
