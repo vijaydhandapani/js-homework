@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 
 import { User } from './user';
+//import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class UserService {
 
   users: User[] = [];
+  formErrors;
 
   private serverResponse = '{ "email": [ "can\'t be blank" ], "first_name": [ "can\'t be blank" ], "last_name": [ "can\'t be blank" ] }'; 
   private userDictionary = { 
@@ -15,16 +18,32 @@ export class UserService {
   };
 
   constructor() { }
+//public newUserSubject = new Subject<any>();
 
-
-  getUsers() {
+  getUsers():Array<any> {
    this.users = JSON.parse("["+Object.keys(this.userDictionary).map(key => this.userDictionary[key]).join(',')+"]");
+   return this.users;
   }
 
   getUser(id: number) {
     return JSON.parse(this.userDictionary[id]);
   }
 
+getServerResponse(){
+  if(!this.formErrors){
+      this.formErrors = JSON.parse(this.serverResponse);
+  }
+  return this.formErrors;
+}
+
+addNewUser(formValue){
+   
+     formValue['id']=4;
+     formValue['buyer_id'] = 4;
+     console.log(formValue)
+     //this.newUserSubject.next(formValue);
+  
+}
   private logError(error: any) {
     console.error('service found an error: '+error);
   }
