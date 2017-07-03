@@ -1,0 +1,64 @@
+<md-grid-list cols="4"  >
+  <md-grid-tile  colspan="4">
+    <md-card>
+      <md-card-header>
+        <md-icon md-card-avatar color="accent">account_box</md-icon>
+        <md-card-title><h3>Create User</h3></md-card-title>
+      </md-card-header>
+      <md-card-content>
+        <form class="create_user_form" #f="ngForm" (ngSubmit)="onUserSubmit(f)" novalidate>
+          <md-input-container class="full-width">
+            <input
+            mdInput 
+            ngModel 
+            #email="ngModel" 
+            type="email" 
+            placeholder="Email Address" 
+            autocomplete="off"
+            value=" " 
+            name="email"
+            email
+            aria-label="Enter email"
+            />
+            <md-error *ngIf="errorMsg.email?.length > 0"> {{errorMsg.email}}</md-error>
+          </md-input-container>
+          <table class="full-width" cellspacing="0">
+            <tr>
+              <td>
+                <md-input-container class="full-width">
+                  <input 
+                  mdInput
+                  ngModel 
+                  required
+                  #first_name="ngModel"
+                  placeholder="First name" 
+                  name="first_name" 
+                  value="" aria-label="Enter first Name"/>
+                  <md-error *ngIf="errorMsg.firstName?.length > 0">{{errorMsg.firstName}}</md-error>
+                </md-input-container>
+                
+              </td>
+              <td>
+                <md-input-container class="full-width">
+                  <input 
+                  mdInput 
+                  ngModel 
+                  required
+                  #last_name="ngModel"
+                  placeholder="Last Name"
+                  name="last_name" 
+                  value="" aria-label="Enter last Name">
+                  <md-error *ngIf="errorMsg.lastName?.length > 0"> {{errorMsg.lastName}}</md-error>
+                </md-input-container>
+              </td>
+            </tr>
+          </table>
+          <md-card-actions>
+          <button md-raised-button class="mat-raised-button mat-accent" type="submit"  >Create User</button>
+        </md-card-actions>
+        </form>
+
+      </md-card-content>
+    </md-card>
+  </md-grid-tile>
+</md-grid-list>
